@@ -20,6 +20,11 @@ body {
   line-height: 1.5;
 }
 
+main {
+  margin: 0 auto;
+  max-width: 80ch;
+}
+
 #typing-game {
   height: 100vh;
 }
