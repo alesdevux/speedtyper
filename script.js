@@ -37,7 +37,11 @@ function initGame() {
   useTimer();
 }
 
-function initEvents() {}
+function initEvents() {
+  document.addEventListener('keydown', () => {
+    $input.focus();
+  });
+}
 
 function useTimer() {
   const interval = setInterval(() => {
