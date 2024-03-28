@@ -41,6 +41,18 @@ main {
 
   padding: 1rem 1.3rem;
   border-radius: 0.5rem;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px 8px;
+}
+
+word-view {
+  border-bottom: 2px solid transparent;
+
+  &.marked {
+    border-bottom-color: var(--color-danger);
+  }
 }
 
 letter-view {

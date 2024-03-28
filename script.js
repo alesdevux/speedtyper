@@ -45,7 +45,32 @@ function initEvents() {
   $input.addEventListener('keyup', onKeyUp);
 }
 
-function onKeyDown() {}
+function onKeyDown(event) {
+  const $activeWord = document.querySelector('word-view.active');
+  const $activeLetter = $activeWord.querySelector('letter-view.active');
+
+  const { key } = event;
+  if (key === ' ') {
+    event.preventDefault();
+
+    const $nextWord = $activeWord.nextElementSibling;
+    const $nextLetter = $nextWord.querySelector('letter-view');
+
+    $activeWord.classList.remove('active');
+    $activeLetter.classList.remove('active', 'is-last');
+    $nextWord.classList.add('active');
+    $nextLetter.classList.add('active');
+
+    $input.value = '';
+
+    const hasMissedLetters = $activeWord.querySelectorAll('letter-view:not(.correct)').length > 0;
+
+    const addCheckClassForWord = hasMissedLetters ? 'marked' : 'correct';
+    $activeWord.classList.add(addCheckClassForWord);
+    return;
+  }
+}
+
 function onKeyUp() {
   const $activeWord = document.querySelector('word-view.active');
   const $activeLetter = $activeWord.querySelector('letter-view.active');
