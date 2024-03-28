@@ -53,6 +53,14 @@ letter-view {
     left: -0.35rem;
     animation: blink 0.9s infinite ease-in-out;
   }
+
+  &.correct {
+    color: var(--color-accent);
+  }
+
+  &.incorrect {
+    color: var(--color-danger);
+  }
 }
 
 @keyframes blink {

@@ -41,6 +41,30 @@ function initEvents() {
   document.addEventListener('keydown', () => {
     $input.focus();
   });
+  $input.addEventListener('keydown', onKeyDown);
+  $input.addEventListener('keyup', onKeyUp);
+}
+
+function onKeyDown() {}
+function onKeyUp() {
+  const $activeWord = document.querySelector('word-view.active');
+  const $activeLetter = $activeWord.querySelector('letter-view.active');
+
+  const currentWord = $activeWord.textContent.trim();
+  $input.maxLength = currentWord.length;
+  console.log({ value: $input.value, currentWord });
+
+  const $allLetters = $activeWord.querySelectorAll('letter-view');
+
+  $allLetters.forEach($letter => $letter.classList.remove('correct', 'incorrect'));
+  $input.value.split('').forEach((letter, index) => {
+    const $letter = $allLetters[index];
+    const letterToCheck = currentWord[index];
+    
+    const isCorrect = letter === letterToCheck;
+    const letterClass = isCorrect ? 'correct' : 'incorrect';
+    $letter.classList.add(letterClass);
+  });
 }
 
 function useTimer() {
