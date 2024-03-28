@@ -29,5 +29,25 @@ function initGame() {
       </word-view>
     `;
   }).join(' ');
+
+  useTimer();
 }
+
 function initEvents() {}
+
+function useTimer() {
+  const interval = setInterval(() => {
+    currentTime--;
+
+    if (currentTime === 0) {
+      clearInterval(interval);
+      endGame();
+    }
+
+    $time.textContent = currentTime;
+  }, 1000);
+}
+
+function endGame() {
+  console.log('Game Over');
+}
