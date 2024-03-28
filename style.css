@@ -24,6 +24,11 @@ body {
   height: 100vh;
 }
 
+#typing-game time {
+  font-size: 1.5rem;
+  color: var(--color-accent);
+}
+
 #typing-game #paragraph {
   background-color: var(--color-dark);
   color: var(--color-light);
