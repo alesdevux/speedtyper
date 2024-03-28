@@ -74,6 +74,7 @@ function onKeyUp() {
     $nextActiveLetter.classList.add('active')
   } else {
     $activeLetter.classList.add('active', 'is-last');
+    if (!$activeWord.nextElementSibling) endGame();
   }
 }
 
