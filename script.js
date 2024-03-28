@@ -65,6 +65,16 @@ function onKeyUp() {
     const letterClass = isCorrect ? 'correct' : 'incorrect';
     $letter.classList.add(letterClass);
   });
+
+  $activeLetter.classList.remove('active', 'is-last');
+  const inputLength = $input.value.length;
+  const $nextActiveLetter = $allLetters[inputLength];
+
+  if ($nextActiveLetter) {
+    $nextActiveLetter.classList.add('active')
+  } else {
+    $activeLetter.classList.add('active', 'is-last');
+  }
 }
 
 function useTimer() {

@@ -54,6 +54,10 @@ letter-view {
     animation: blink 0.9s infinite ease-in-out;
   }
 
+  &.active.is-last::before {
+    left: 0.35rem;
+  }
+
   &.correct {
     color: var(--color-accent);
   }
