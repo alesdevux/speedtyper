@@ -30,6 +30,10 @@ function initGame() {
     `;
   }).join(' ');
 
+  const $firstWord = document.querySelector('word-view');
+  $firstWord.classList.add('active');
+  $firstWord.querySelector('letter-view').classList.add('active');
+
   useTimer();
 }
 

@@ -38,6 +38,27 @@ body {
   border-radius: 0.5rem;
 }
 
+letter-view {
+  position: relative;
+
+  &.active::before {
+    content: '|';
+    color: var(--color-accent);
+    position: absolute;
+    left: -0.35rem;
+    animation: blink 0.9s infinite ease-in-out;
+  }
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+}
+
 #typing-game input {
   background-color: var(--color-light);
   color: var(--color-dark);
