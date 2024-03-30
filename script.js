@@ -78,7 +78,6 @@ function onKeyDown(event) {
   }
 
   if (key === 'Backspace') {
-    console.log('backspace');
     const $prevWord = $activeWord.previousElementSibling;
     const $prevLetter = $activeLetter.previousElementSibling;
     
@@ -113,7 +112,6 @@ function onKeyUp() {
 
   const currentWord = $activeWord.innerText.trim();
   $input.maxLength = currentWord.length;
-  console.log({ value: $input.value, currentWord });
 
   const $allLetters = $activeWord.querySelectorAll('letter-view');
 
