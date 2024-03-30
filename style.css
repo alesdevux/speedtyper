@@ -27,6 +27,7 @@ main {
 
 #typing-game {
   height: 100vh;
+  display: block;
 }
 
 #typing-game time {
@@ -102,5 +103,23 @@ letter-view {
   top: 5px;
   left: 5px;
   pointer-events: none;
-  /* opacity: 0; */
+  opacity: 0;
+}
+
+#results {
+  display: none;
+}
+
+#results h2 {
+  font-weight: 400;
+  opacity: 0.8;
+  font-size: 16px;
+  margin: 0;
+}
+
+#results p {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--color-accent);
+  margin: 0;
 }
