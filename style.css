@@ -1,6 +1,10 @@
 :root {
   color-scheme: light dark;
 
+
+  --color-background: #f0f0f0;
+  --color-text: #333;
+  
   --color-background: #f0f0f0;
   --color-text: #333;
   --color-primary: #007bff;
@@ -12,12 +16,21 @@
   --color-info: #17a2b8;
   --color-light: #f8f9fa;
   --color-dark: #343a40;
+  --color-white: #fff;
+  --color-dark-soft: #495057;
+
+  --bg-color: light-dark(var(--color-light), var(--color-dark));
+  --text-color: light-dark(var(--color-dark), var(--color-light));
+  --bg-game-color: light-dark(var(--color-white), var(--color-dark-soft));
+  --border-game-color: var(--color-secondary);
 }
 
 body {
   font-family: 'Roboto', sans-serif;
   font-size: 1rem;
   line-height: 1.5;
+  color: var(--text-color);
+  background-color: var(--bg-color);
 }
 
 main {
@@ -36,12 +49,12 @@ main {
 }
 
 #typing-game #paragraph {
-  background-color: var(--color-dark);
-  color: var(--color-light);
+  background-color: var(--bg-game-color);
   font-family: Menlo, monospace;
 
   padding: 1rem 1.3rem;
   border-radius: 0.5rem;
+  border: 1.5px solid var(--border-game-color);
 
   display: flex;
   flex-wrap: wrap;
@@ -108,6 +121,9 @@ letter-view {
 
 #results {
   display: none;
+  border-radius: 0.5rem;
+  background-color: var(--bg-game-color);
+  padding: 1rem 1.3rem;
 }
 
 #results h2 {
