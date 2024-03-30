@@ -4,6 +4,11 @@ const $time = document.querySelector('time');
 const $paragraph = document.querySelector('#paragraph');
 const $input = document.querySelector('input');
 
+const $game = document.querySelector('#typing-game');
+const $results = document.querySelector('#results');
+const $wpm = document.querySelector('#wpm');
+const $accuracy = document.querySelector('#accuracy');
+
 const INITIAL_TIME = 30;
 
 let words = [];
@@ -130,7 +135,7 @@ function onKeyUp() {
     $nextActiveLetter.classList.add('active')
   } else {
     $activeLetter.classList.add('active', 'is-last');
-    // if (!$activeWord.nextElementSibling) endGame();
+    if (!$activeWord.nextElementSibling) endGame();
   }
 }
 
@@ -141,11 +146,25 @@ function useTimer() {
 
     if (currentTime === 0) {
       clearInterval(interval);
-      // endGame();
+      endGame();
     }
   }, 1000);
 }
 
 function endGame() {
-  console.log('Game Over');
+  $game.style.display = 'none';
+  $results.style.display = 'block';
+
+  const correctWords = $paragraph.querySelectorAll('word-view.correct').length;
+  const correctLetters = $paragraph.querySelectorAll('letter-view.correct').length;
+  const incorrectLetters = $paragraph.querySelectorAll('letter-view.incorrect').length;
+
+  const totalLetters = correctLetters + incorrectLetters;
+  const wpm = correctWords / INITIAL_TIME * 60;
+  const accuracy = totalLetters > 0
+    ? correctLetters * 100 / totalLetters
+    : 0;
+
+  $wpm.textContent = wpm;
+  $accuracy.textContent = `${accuracy.toFixed(2)}%`;
 }
