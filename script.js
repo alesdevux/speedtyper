@@ -8,6 +8,7 @@ const $game = document.querySelector('#typing-game');
 const $results = document.querySelector('#results');
 const $wpm = document.querySelector('#wpm');
 const $accuracy = document.querySelector('#accuracy');
+const $restart = document.querySelector('#restart');
 
 const INITIAL_TIME = 30;
 
@@ -18,6 +19,8 @@ initGame();
 initEvents();
 
 function initGame() {
+  $game.style.display = 'block'
+  $results.style.display = 'none'
   $input.value = '';
   
   words = INITIAL_TEXTS[Math.floor(Math.random() * INITIAL_TEXTS.length)].split(' ');
@@ -50,6 +53,7 @@ function initEvents() {
   });
   $input.addEventListener('keydown', onKeyDown);
   $input.addEventListener('keyup', onKeyUp);
+  $restart.addEventListener('click', initGame);
 }
 
 function onKeyDown(event) {
