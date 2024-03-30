@@ -13,6 +13,8 @@ initGame();
 initEvents();
 
 function initGame() {
+  $input.value = '';
+
   words = TEXT.split(' ');
   currentTime = INITIAL_TIME;
   $time.textContent = currentTime;
@@ -46,7 +48,7 @@ function initEvents() {
 }
 
 function onKeyDown(event) {
-  const $activeWord = document.querySelector('word-view.active');
+  const $activeWord = $paragraph.querySelector('word-view.active');
   const $activeLetter = $activeWord.querySelector('letter-view.active');
 
   const { key } = event;
@@ -56,8 +58,8 @@ function onKeyDown(event) {
     const $nextWord = $activeWord.nextElementSibling;
     const $nextLetter = $nextWord.querySelector('letter-view');
 
-    $activeWord.classList.remove('active');
-    $activeLetter.classList.remove('active', 'is-last');
+    $activeWord.classList.remove('active', 'marked');
+    $activeLetter.classList.remove('active');
     $nextWord.classList.add('active');
     $nextLetter.classList.add('active');
 
@@ -69,24 +71,53 @@ function onKeyDown(event) {
     $activeWord.classList.add(addCheckClassForWord);
     return;
   }
+
+  if (key === 'Backspace') {
+    console.log('backspace');
+    const $prevWord = $activeWord.previousElementSibling;
+    const $prevLetter = $activeLetter.previousElementSibling;
+    
+    if(!$prevWord && !$prevLetter) {
+      event.preventDefault();
+      return;
+    }
+    
+    const $wordMarked = $paragraph.querySelector('word-view.marked');
+    if($wordMarked && !$prevLetter) {
+      event.preventDefault();
+      $prevWord.classList.remove('marked');
+      $prevWord.classList.add('active');
+
+      const $letterToFocus = $prevWord.querySelector('letter-view:last-child');
+
+      $activeLetter.classList.remove('active');
+      $letterToFocus.classList.add('active');
+
+      $input.value = [
+        ...$prevWord.querySelectorAll('letter-view.correct, letter-view.incorrect')
+      ].map($el => {
+        return $el.classList.contains('correct') ? $el.innerText : ' ';
+      }).join('');
+    }
+  }
 }
 
 function onKeyUp() {
-  const $activeWord = document.querySelector('word-view.active');
+  const $activeWord = $paragraph.querySelector('word-view.active');
   const $activeLetter = $activeWord.querySelector('letter-view.active');
 
-  const currentWord = $activeWord.textContent.trim();
+  const currentWord = $activeWord.innerText.trim();
   $input.maxLength = currentWord.length;
   console.log({ value: $input.value, currentWord });
 
   const $allLetters = $activeWord.querySelectorAll('letter-view');
 
   $allLetters.forEach($letter => $letter.classList.remove('correct', 'incorrect'));
-  $input.value.split('').forEach((letter, index) => {
+  $input.value.split('').forEach((char, index) => {
     const $letter = $allLetters[index];
     const letterToCheck = currentWord[index];
     
-    const isCorrect = letter === letterToCheck;
+    const isCorrect = char === letterToCheck;
     const letterClass = isCorrect ? 'correct' : 'incorrect';
     $letter.classList.add(letterClass);
   });
@@ -99,20 +130,19 @@ function onKeyUp() {
     $nextActiveLetter.classList.add('active')
   } else {
     $activeLetter.classList.add('active', 'is-last');
-    if (!$activeWord.nextElementSibling) endGame();
+    // if (!$activeWord.nextElementSibling) endGame();
   }
 }
 
 function useTimer() {
   const interval = setInterval(() => {
     currentTime--;
+    $time.textContent = currentTime;
 
     if (currentTime === 0) {
       clearInterval(interval);
-      endGame();
+      // endGame();
     }
-
-    $time.textContent = currentTime;
   }, 1000);
 }
 
