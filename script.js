@@ -34,7 +34,7 @@ export function initGame() {
   ][$html.lang].split(' ');
 
   currentTime = INITIAL_TIME;
-  $time.textContent = currentTime;
+  printTime(currentTime);
 
   $paragraph.innerHTML = words.map(word => {
     const letters = word.split('');
@@ -150,10 +150,19 @@ function onKeyUp() {
   }
 }
 
+function printTime(currentTime) {
+  if (currentTime < 10) {
+    currentTime = currentTime
+      .toString()
+      .padStart(2, '0');
+  }
+  $time.textContent = currentTime;
+}
+
 function useTimer() {
   interval = setInterval(() => {
     currentTime--;
-    $time.textContent = currentTime;
+    printTime(currentTime);
   
     if (currentTime === 0) {
       clearInterval(interval);
