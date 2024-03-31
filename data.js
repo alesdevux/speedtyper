@@ -1,4 +1,30 @@
+export const webContentText = {
+  "ca-ES": {
+    "ca-ES": "Català",
+    "es-ES": "Castellà",
+    "en-US": "Anglès"
+  },
+  "es-ES": {
+    "ca-ES": "Catalán",
+    "es-ES": "Castellano",
+    "en-US": "Inglés"
+  },
+  "en-US": {
+    "ca-ES": "Catalan",
+    "es-ES": "Spanish",
+    "en-US": "English"
+  },
+}
+
 export const texts = [
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim.",
-  "Pellentesque congue. Ut in risus volutpat libero pharetra tempor. Cras vestibulum bibendum augue. Praesent egestas leo in pede. Praesent blandit odio eu enim. Pellentesque sed dui ut augue blandit sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam nibh. Mauris ac mauris sed pede pellentesque fermentum. Maecenas adipiscing ante non diam sodales hendrerit.",
+  {
+    "ca-ES": "Amb 16 anys vaig descubrir el facinant món de la programació. Vuit anys després, al 2019, vaig decidir que el Desenvolupament Web seria més que un hobby. Des de llavors he estudiat +1700h, entre un curs oficial i un bootcamp i he acomulat +2 anys d’experiència. Mentre he seguit aprenent i actualitzant-me amb +50 cursos en plataformes digitals [Coursera amb Google, Udemy, Platzi, …] principalment sobre Desenvolupament però també sobre IT, Soft Skills i anglès.",
+    "es-ES": "Con 16 años descubrí el fascinante mundo de la programación. Ocho años después, en 2019, decidí que el Desarrollo Web sería más que un hobby. Desde entonces he estudiado +1700h, entre un curso oficial y un bootcamp y he acumulado +2 años de experiencia. Mientras he seguido aprendiendo y actualizándome con +50 cursos en plataformas digitales [Coursera con Google, Udemy, Platzi, …] principalmente sobre Desarrollo pero también sobre IT, Soft Skills y inglés.",
+    "en-US": "At 16 I discovered the fascinating world of programming. Eight years later, in 2019, I decided that Web Development would be more than a hobby. Since then I have studied +1700h, between an official course and a bootcamp and I have accumulated +2 years of experience. While I have continued learning and updating myself with +50 courses on digital platforms [Coursera with Google, Udemy, Platzi, …] mainly on Development but also on IT, Soft Skills and English."
+  },
+  {
+    "ca-ES": "He mentoritzat i divulgat els conceptes i l'experiència que he adquirit durant tots aquests anys d'aprenentatge i treball amb les persones amb les que he compartit projecte.",
+    "es-ES": "He mentorizado y divulgado los conceptos y la experiencia que he adquirido durante todos estos años de aprendizaje y trabajo con las personas con las que he compartido proyecto.",
+    "en-US": "I have mentored and disseminated the concepts and experience that I have acquired during all these years of learning and working with the people with whom I have shared projects."
+  }
 ]
