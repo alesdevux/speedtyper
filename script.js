@@ -11,19 +11,28 @@ const $accuracy = document.querySelector('#accuracy');
 const $restart = document.querySelector('#restart');
 
 const INITIAL_TIME = 30;
+let interval = null;
 
 let words = [];
 let currentTime = INITIAL_TIME;
 
-initGame();
-initEvents();
+document.addEventListener("DOMContentLoaded", () => {
+  initGame();
+  initEvents();
+});
 
-function initGame() {
-  $game.style.display = 'block'
-  $results.style.display = 'none'
+export function initGame() {
+  const $html = document.querySelector('html');
+
+  clearInterval(interval);
+  $game.style.display = 'block';
+  $results.style.display = 'none';
   $input.value = '';
   
-  words = INITIAL_TEXTS[Math.floor(Math.random() * INITIAL_TEXTS.length)].split(' ');
+  words = INITIAL_TEXTS[
+    Math.floor(Math.random() * INITIAL_TEXTS.length)
+  ][$html.lang].split(' ');
+
   currentTime = INITIAL_TIME;
   $time.textContent = currentTime;
 
@@ -142,10 +151,10 @@ function onKeyUp() {
 }
 
 function useTimer() {
-  const interval = setInterval(() => {
+  interval = setInterval(() => {
     currentTime--;
     $time.textContent = currentTime;
-
+  
     if (currentTime === 0) {
       clearInterval(interval);
       endGame();
