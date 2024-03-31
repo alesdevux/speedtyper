@@ -83,9 +83,22 @@ function onKeyDown(event) {
 
     $input.value = '';
 
-    const hasMissedLetters = $activeWord.querySelectorAll('letter-view:not(.correct)').length > 0;
+    const hasIncorrectLetters = $activeWord.querySelectorAll('letter-view:not(.correct)').length > 0;
 
-    const addCheckClassForWord = hasMissedLetters ? 'marked' : 'correct';
+    let addCheckClassForWord;
+    if (hasIncorrectLetters) {
+      const hasMissedLetters = $activeWord
+        .querySelectorAll(
+          `letter-view:not(.correct),
+          letter-view:not(.incorrect)`
+        );
+      addCheckClassForWord = 'marked';
+      
+      hasMissedLetters.forEach($letter => $letter
+        .classList.add('passed'));
+    } else {
+      addCheckClassForWord = 'correct';
+    }
     $activeWord.classList.add(addCheckClassForWord);
     return;
   }
@@ -106,7 +119,8 @@ function onKeyDown(event) {
       $prevWord.classList.add('active');
 
       const $letterToFocus = $prevWord.querySelector('letter-view:last-child');
-
+      
+      $prevWord.querySelectorAll('letter-view.passed').forEach($letter => $letter.classList.remove('passed'));
       $activeLetter.classList.remove('active');
       $letterToFocus.classList.add('active');
 
@@ -178,8 +192,9 @@ function endGame() {
   const correctWords = $paragraph.querySelectorAll('word-view.correct').length;
   const correctLetters = $paragraph.querySelectorAll('letter-view.correct').length;
   const incorrectLetters = $paragraph.querySelectorAll('letter-view.incorrect').length;
+  const passedLetters = $paragraph.querySelectorAll('letter-view.passed').length;
 
-  const totalLetters = correctLetters + incorrectLetters;
+  const totalLetters = correctLetters + incorrectLetters + passedLetters;
   const wpm = correctWords / INITIAL_TIME * 60;
   const accuracy = totalLetters > 0
     ? correctLetters * 100 / totalLetters

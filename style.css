@@ -157,6 +157,10 @@ letter-view {
     color: var(--color-danger);
     opacity: 1;
   }
+
+  &.passed {
+    opacity: 1;
+  }
 }
 
 @keyframes blink {
