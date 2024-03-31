@@ -7,10 +7,10 @@ const $es = document.querySelector('#es-ES');
 const $en = document.querySelector('#en-US');
 const $languageOptions = [$ca, $es, $en];
 
-updateSelectedLenguage(language);
-initLenguageEvents();
+updateSelectedLanguage(language);
+initLanguageEvents();
 
-function updateSelectedLenguage(language) {
+function updateSelectedLanguage(language) {
   const $html = document.querySelector('html');
   if (language !== $html.lang) $html.lang = language;
 
@@ -30,12 +30,12 @@ function updateWebText(language) {
   });
 }
 
-function initLenguageEvents() {
+function initLanguageEvents() {
   $languageOptions.forEach($option => {
     $option.addEventListener('click', () => {
       const newLanguage = $option.id;
 
-      updateSelectedLenguage(newLanguage);
+      updateSelectedLanguage(newLanguage);
       initGame();
     });
   });
