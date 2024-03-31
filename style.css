@@ -1,13 +1,7 @@
 :root {
   color-scheme: light dark;
-
-
-  --color-background: #f0f0f0;
-  --color-text: #333;
   
-  --color-background: #f0f0f0;
-  --color-text: #333;
-  --color-primary: #007bff;
+  --color-primary: #8000ff;
   --color-secondary: #6c757d;
   --color-accent: #ffc107;
   --color-success: #28a745;
@@ -25,21 +19,85 @@
   --border-game-color: var(--color-secondary);
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   font-family: 'Roboto', sans-serif;
   font-size: 1rem;
   line-height: 1.5;
   color: var(--text-color);
   background-color: var(--bg-color);
+  min-height: 100vh;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-primary);
+}
+
+button {
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+main,
+#header {
+  margin: 0 auto;
+  max-width: 80ch;
+  padding: 0 1rem;
+}
+
+#header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+#header ul {
+  display: flex;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  gap: 0.1rem;
+  background-color: var(--bg-color);
+}
+
+#select-lenguage button {
+  background-color: var(--bg-game-color);
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1.5rem;
+  font-weight: 700;
+
+  &:hover {
+    background-color: var(--color-primary);
+    color: var(--color-light);
+  }
+
+  &.active {
+    background-color: var(--color-accent);
+    color: var(--color-dark);
+    cursor: default;
+    pointer-events: none;
+  }
 }
 
 main {
-  margin: 0 auto;
-  max-width: 80ch;
+  padding-top: 4rem;
 }
 
 #typing-game {
-  height: 100vh;
   display: block;
 }
 
@@ -71,6 +129,7 @@ word-view {
 
 letter-view {
   position: relative;
+  opacity: 0.5;
 
   &.active::before {
     content: '|';
@@ -86,10 +145,12 @@ letter-view {
 
   &.correct {
     color: var(--color-accent);
+    opacity: 1;
   }
 
   &.incorrect {
     color: var(--color-danger);
+    opacity: 1;
   }
 }
 
@@ -140,14 +201,11 @@ letter-view {
   margin: 0;
 }
 
-button {
-  background: transparent;
-  border: 0;
+main button {
   margin-top: 32px;
   padding: 8px 24px;
   opacity: .5;
   transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-  cursor: pointer;
   border-radius: 0.5rem;
 
   &:hover {
