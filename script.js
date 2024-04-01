@@ -1,5 +1,5 @@
 import { texts as INITIAL_TEXTS } from "./data.js";
-import { accuracyFormat } from "./detect-language.js";
+import { numberDecimalsFormat } from "./detect-language.js";
 
 const $time = document.querySelector('time');
 const $paragraph = document.querySelector('#paragraph');
@@ -17,7 +17,7 @@ const $incorrectHist = document.querySelector('#incorrect-hist');
 
 const $restart = document.querySelector('#restart');
 
-const INITIAL_TIME = 30;
+const INITIAL_TIME = 0;
 let interval = null;
 
 let words = [];
@@ -108,6 +108,8 @@ function onKeyDown(event) {
     } else {
       addCheckClassForWord = 'correct';
     }
+
+    if (!$nextWord) endGame();
     $activeWord.classList.add(addCheckClassForWord);
     return;
   }
@@ -191,10 +193,13 @@ function printTime(currentTime) {
 
 function useTimer() {
   interval = setInterval(() => {
-    currentTime--;
+    currentTime++;
     printTime(currentTime);
-  
-    if (currentTime === 0) {
+
+    const userToLate = currentTime >= 180;
+    const userNotFocus = document.hidden;
+
+    if (userToLate || userNotFocus) {
       clearInterval(interval);
       endGame();
     }
@@ -205,7 +210,12 @@ function calcAccuracy(correctLetters, totalLetters) {
   const accuracy = totalLetters > 0
     ? correctLetters * 100 / totalLetters
     : 0;
-  return accuracyFormat(accuracy);
+  return `${numberDecimalsFormat(accuracy)}%`;
+}
+
+function calcWPM(correctWords) {
+  const wpm = correctWords / (currentTime / 60);
+  return numberDecimalsFormat(wpm, 0);
 }
 
 function endGame() {
@@ -219,7 +229,7 @@ function endGame() {
 
   const totalLetters = correctLetters + incorrectLetters + passedLetters;
   const totalLettersWithHistoryErrors = correctLetters + passedLetters + countIncorrect;
-  const wpm = correctWords / INITIAL_TIME * 60;
+  const wpm = calcWPM(correctWords);
 
   $wpm.textContent = wpm;
   $accuracy.textContent = calcAccuracy(correctLetters, totalLetters);
