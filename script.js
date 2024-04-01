@@ -187,7 +187,7 @@ function useTimer() {
 
 function endGame() {
   $game.style.display = 'none';
-  $results.style.display = 'block';
+  $results.style.display = 'grid';
 
   const correctWords = $paragraph.querySelectorAll('word-view.correct').length;
   const correctLetters = $paragraph.querySelectorAll('letter-view.correct').length;

@@ -6,8 +6,15 @@ export const webContentText = {
       "en-US": "Anglès"
     },
     "result-title": {
+      "results-title": "Resultats finals",
       "wpm-title": "Paraules per minut",
-      "accuracy-title": "Precisió"
+      "accuracy-title": "Precisió",
+      "correct-title": "Lletres correctes",
+      "incorrect-title": "Lletres incorrectes",
+      "history-title": "Historial",
+      "accuracy-hist-title": "Precisió",
+      "missed-hist-title": "Lletres passades per alt",
+      "incorrect-hist-title": "Lletres incorrectes",
     }
   },
   "es-ES": {
@@ -17,8 +24,15 @@ export const webContentText = {
       "en-US": "Inglés"
     },
     "result-title": {
+      "results-title": "Resultados finales",
       "wpm-title": "Palabras por minuto",
-      "accuracy-title": "Precisión"
+      "accuracy-title": "Precisión",
+      "correct-title": "Letras correctas",
+      "incorrect-title": "Letras incorrectas",
+      "history-title": "Historial",
+      "accuracy-hist-title": "Precisión",
+      "missed-hist-title": "Letras pasadas por alto",
+      "incorrect-hist-title": "Letras incorrectas",
     }
   },
   "en-US": {
@@ -28,8 +42,15 @@ export const webContentText = {
       "en-US": "English"
     },
     "result-title": {
+      "results-title": "Final results",
       "wpm-title": "Words per minute",
-      "accuracy-title": "Accuracy"
+      "accuracy-title": "Accuracy",
+      "correct-title": "Correct letters",
+      "incorrect-title": "Incorrect letters",
+      "history-title": "History",
+      "accuracy-hist-title": "Accuracy",
+      "missed-hist-title": "Missed letters",
+      "incorrect-hist-title": "Incorrect letters",
     }
   },
 }
