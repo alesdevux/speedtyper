@@ -12,11 +12,12 @@ const $accuracy = document.querySelector('#accuracy');
 const $correct = document.querySelector('#correct');
 const $missed = document.querySelector('#missed');
 const $incorrect = document.querySelector('#incorrect');
+const $accuracyHist = document.querySelector('#accuracy-hist');
 const $incorrectHist = document.querySelector('#incorrect-hist');
 
 const $restart = document.querySelector('#restart');
 
-const INITIAL_TIME = 1;
+const INITIAL_TIME = 30;
 let interval = null;
 
 let words = [];
@@ -200,6 +201,13 @@ function useTimer() {
   }, 1000);
 }
 
+function calcAccuracy(correctLetters, totalLetters) {
+  const accuracy = totalLetters > 0
+    ? correctLetters * 100 / totalLetters
+    : 0;
+  return accuracyFormat(accuracy);
+}
+
 function endGame() {
   $game.style.display = 'none';
   $results.style.display = 'grid';
@@ -210,16 +218,15 @@ function endGame() {
   const passedLetters = $paragraph.querySelectorAll('letter-view.passed').length;
 
   const totalLetters = correctLetters + incorrectLetters + passedLetters;
+  const totalLettersWithHistoryErrors = correctLetters + passedLetters + countIncorrect;
   const wpm = correctWords / INITIAL_TIME * 60;
-  const accuracy = totalLetters > 0
-    ? correctLetters * 100 / totalLetters
-    : 0;
 
   $wpm.textContent = wpm;
-  $accuracy.textContent = accuracyFormat(accuracy);
+  $accuracy.textContent = calcAccuracy(correctLetters, totalLetters);
   $correct.textContent = correctLetters;
   $missed.textContent = passedLetters;
   $incorrect.textContent = incorrectLetters;
   
+  $accuracyHist.textContent = calcAccuracy(correctLetters, totalLettersWithHistoryErrors);
   $incorrectHist.textContent = countIncorrect;
 }
