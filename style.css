@@ -194,6 +194,10 @@ letter-view {
 
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
+  grid-template-areas:
+    "wpm wpm"
+    "final history"
+    "final restart";
 }
 
 #results section {
@@ -201,6 +205,22 @@ letter-view {
   background-color: var(--bg-game-color);
   border: 1.5px solid var(--border-game-color);
   padding: 1rem 1.3rem;
+}
+
+#results #wpm-section {
+  grid-area: wpm;
+}
+
+#results #results-section {
+  grid-area: final;
+}
+
+#results #history-section {
+  grid-area: history;
+}
+
+#results #restart {
+  grid-area: restart;
 }
 
 #results #wpm-title {
