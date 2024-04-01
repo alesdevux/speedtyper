@@ -145,10 +145,7 @@ function onKeyDown(event) {
     }
   }
 
-  if (key === 'Escape') {
-    clearInterval(interval);
-    endGame();
-  }
+  if (key === 'Escape') endGame();
 }
 
 function onKeyUp() {
@@ -206,10 +203,7 @@ function useTimer() {
     const userToLate = currentTime >= 180;
     const userNotFocus = document.hidden;
 
-    if (userToLate || userNotFocus) {
-      clearInterval(interval);
-      endGame();
-    }
+    if (userToLate || userNotFocus) endGame();
   }, 1000);
 }
 
@@ -226,6 +220,7 @@ function calcWPM(correctWords) {
 }
 
 function endGame() {
+  clearInterval(interval);
   $game.style.display = 'none';
   $results.style.display = 'grid';
 
