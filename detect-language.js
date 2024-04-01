@@ -1,7 +1,7 @@
 import { webContentText } from "./data.js";
 import { initGame } from "./script.js";
 
-const $html = document.querySelector('html');
+const $html = document.documentElement;
 const language = navigator.language;
 const $ca = document.querySelector('#ca-ES');
 const $es = document.querySelector('#es-ES');
@@ -35,7 +35,7 @@ function updateWebText(language) {
 
 export function numberDecimalsFormat(number, decimals = 2) {
   let numberFixed = number.toFixed(decimals);
-  if (document.documentElement.lang !== 'en-US') {
+  if ($html.lang !== 'en-US') {
     numberFixed = numberFixed.replace('.', ',');
   }
 
