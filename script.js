@@ -2,6 +2,7 @@ import { texts as INITIAL_TEXTS } from "./data.js";
 import { numberDecimalsFormat } from "./detect-language.js";
 
 const $time = document.querySelector('time');
+const $endGameBtn = document.querySelector('#end-game');
 const $paragraph = document.querySelector('#paragraph');
 const $input = document.querySelector('input');
 
@@ -71,6 +72,7 @@ function initEvents() {
   });
   $input.addEventListener('keydown', onKeyDown);
   $input.addEventListener('keyup', onKeyUp);
+  $endGameBtn.addEventListener('click', endGame);
   $restart.addEventListener('click', initGame);
 }
 
