@@ -144,6 +144,11 @@ function onKeyDown(event) {
       }).join('');
     }
   }
+
+  if (key === 'Escape') {
+    clearInterval(interval);
+    endGame();
+  }
 }
 
 function onKeyUp() {
