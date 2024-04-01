@@ -185,6 +185,15 @@ function useTimer() {
   }, 1000);
 }
 
+function accuracyFormat(accuracy) {
+  let accuracyPercentage = accuracy.toFixed(2);
+  if (navigator.language !== 'en-US') {
+    accuracyPercentage = accuracyPercentage.replace('.', ',');
+  }
+
+  return `${accuracyPercentage}%`;
+}
+
 function endGame() {
   $game.style.display = 'none';
   $results.style.display = 'grid';
@@ -201,5 +210,5 @@ function endGame() {
     : 0;
 
   $wpm.textContent = wpm;
-  $accuracy.textContent = `${accuracy.toFixed(2)}%`;
+  $accuracy.textContent = accuracyFormat(accuracy);
 }
