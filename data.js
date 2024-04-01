@@ -14,9 +14,7 @@ export const webContentText = {
       "incorrect-title": "Lletres incorrectes",
       "history-title": "Historial",
       "accuracy-hist-title": "Precisió",
-      "correct-hist-title": "Lletres correctes",
-      "missed-hist-title": "Lletres passades per alt",
-      "incorrect-hist-title": "Lletres incorrectes",
+      "incorrect-hist-title": "Errors totals",
     }
   },
   "es-ES": {
@@ -34,9 +32,7 @@ export const webContentText = {
       "incorrect-title": "Letras incorrectas",
       "history-title": "Historial",
       "accuracy-hist-title": "Precisión",
-      "correct-hist-title": "Letras correctas",
-      "missed-hist-title": "Letras pasadas por alto",
-      "incorrect-hist-title": "Letras incorrectas",
+      "incorrect-hist-title": "Errores totales",
     }
   },
   "en-US": {
@@ -54,9 +50,7 @@ export const webContentText = {
       "incorrect-title": "Incorrect letters",
       "history-title": "History",
       "accuracy-hist-title": "Accuracy",
-      "correct-hist-title": "Correct letters",
-      "missed-hist-title": "Missed letters",
-      "incorrect-hist-title": "Incorrect letters",
+      "incorrect-hist-title": "Total errors",
     }
   },
 }
