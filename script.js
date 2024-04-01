@@ -1,4 +1,5 @@
 import { texts as INITIAL_TEXTS } from "./data.js";
+import { accuracyFormat } from "./detect-language.js";
 
 const $time = document.querySelector('time');
 const $paragraph = document.querySelector('#paragraph');
@@ -8,13 +9,20 @@ const $game = document.querySelector('#typing-game');
 const $results = document.querySelector('#results');
 const $wpm = document.querySelector('#wpm');
 const $accuracy = document.querySelector('#accuracy');
+const $correct = document.querySelector('#correct');
+const $missed = document.querySelector('#missed');
+const $incorrect = document.querySelector('#incorrect');
+const $incorrectHist = document.querySelector('#incorrect-hist');
+
 const $restart = document.querySelector('#restart');
 
-const INITIAL_TIME = 30;
+const INITIAL_TIME = 1;
 let interval = null;
 
 let words = [];
 let currentTime = INITIAL_TIME;
+
+let countIncorrect = 0;
 
 document.addEventListener("DOMContentLoaded", () => {
   initGame();
@@ -148,7 +156,14 @@ function onKeyUp() {
     const letterToCheck = currentWord[index];
     
     const isCorrect = char === letterToCheck;
-    const letterClass = isCorrect ? 'correct' : 'incorrect';
+    
+    let letterClass;
+    if (isCorrect) {
+      letterClass = 'correct';
+    } else {
+      letterClass = 'incorrect';
+      countIncorrect++;
+    }
     $letter.classList.add(letterClass);
   });
 
@@ -185,15 +200,6 @@ function useTimer() {
   }, 1000);
 }
 
-function accuracyFormat(accuracy) {
-  let accuracyPercentage = accuracy.toFixed(2);
-  if (navigator.language !== 'en-US') {
-    accuracyPercentage = accuracyPercentage.replace('.', ',');
-  }
-
-  return `${accuracyPercentage}%`;
-}
-
 function endGame() {
   $game.style.display = 'none';
   $results.style.display = 'grid';
@@ -211,4 +217,9 @@ function endGame() {
 
   $wpm.textContent = wpm;
   $accuracy.textContent = accuracyFormat(accuracy);
+  $correct.textContent = correctLetters;
+  $missed.textContent = passedLetters;
+  $incorrect.textContent = incorrectLetters;
+  
+  $incorrectHist.textContent = countIncorrect;
 }
