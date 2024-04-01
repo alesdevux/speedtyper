@@ -72,7 +72,7 @@ main,
   background-color: var(--bg-color);
 }
 
-#select-lenguage button {
+#select-language button {
   background-color: var(--bg-game-color);
   color: var(--text-color);
   display: flex;
