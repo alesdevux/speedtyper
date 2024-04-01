@@ -1,6 +1,7 @@
 import { webContentText } from "./data.js";
 import { initGame } from "./script.js";
 
+const $html = document.querySelector('html');
 const language = navigator.language;
 const $ca = document.querySelector('#ca-ES');
 const $es = document.querySelector('#es-ES');
@@ -11,7 +12,6 @@ updateSelectedLanguage(language);
 initLanguageEvents();
 
 function updateSelectedLanguage(language) {
-  const $html = document.querySelector('html');
   if (language !== $html.lang) $html.lang = language;
 
   $languageOptions.forEach($option => $option.classList.remove('active'));
@@ -31,6 +31,15 @@ function updateWebText(language) {
       $element.textContent = text;
     });
   });
+}
+
+export function accuracyFormat(accuracy) {
+  let accuracyPercentage = accuracy.toFixed(2);
+  if ($html.lang !== 'en-US') {
+    accuracyPercentage = accuracyPercentage.replace('.', ',');
+  }
+
+  return `${accuracyPercentage}%`;
 }
 
 function initLanguageEvents() {
