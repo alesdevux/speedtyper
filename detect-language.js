@@ -24,9 +24,12 @@ function updateSelectedLanguage(language) {
 }
 
 function updateWebText(language) {
-  $languageOptions.forEach($option => {
-    const text = webContentText[language][$option.id];
-    $option.textContent = text;
+  Object.keys(webContentText[language]).forEach(section => {
+    const $sectionsToTranslate = document.querySelectorAll(`.${section}`);
+    $sectionsToTranslate.forEach($element => {
+      const text = webContentText[language][section][$element.id];
+      $element.textContent = text;
+    });
   });
 }
 

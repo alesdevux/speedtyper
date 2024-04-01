@@ -1,24 +1,42 @@
 export const webContentText = {
   "ca-ES": {
-    "ca-ES": "Català",
-    "es-ES": "Castellà",
-    "en-US": "Anglès"
+    "option-language": {
+      "ca-ES": "Català",
+      "es-ES": "Castellà",
+      "en-US": "Anglès"
+    },
+    "result-title": {
+      "wpm-title": "Paraules per minut",
+      "accuracy-title": "Precisió"
+    }
   },
   "es-ES": {
-    "ca-ES": "Catalán",
-    "es-ES": "Castellano",
-    "en-US": "Inglés"
+    "option-language": {
+      "ca-ES": "Catalán",
+      "es-ES": "Castellano",
+      "en-US": "Inglés"
+    },
+    "result-title": {
+      "wpm-title": "Palabras por minuto",
+      "accuracy-title": "Precisión"
+    }
   },
   "en-US": {
-    "ca-ES": "Catalan",
-    "es-ES": "Spanish",
-    "en-US": "English"
+    "option-language": {
+      "ca-ES": "Catalan",
+      "es-ES": "Spanish",
+      "en-US": "English"
+    },
+    "result-title": {
+      "wpm-title": "Words per minute",
+      "accuracy-title": "Accuracy"
+    }
   },
 }
 
 export const texts = [
   {
-    "ca-ES": "Amb 16 anys vaig descubrir el fascinant món de la programació. Vuit anys després, al 2019, vaig decidir que el Desenvolupament Web seria més que un hobby. Des de llavors he estudiat +1700h, entre un curs oficial i un bootcamp i he acumulat +2 anys d’experiència. Mentre he seguit aprenent i actualitzant-me amb +50 cursos en plataformes digitals [Coursera amb Google, Udemy, Platzi, …] principalment sobre Desenvolupament però també sobre IT, Soft Skills i anglès. Així com aportant a l’Open Source.",
+    "ca-ES": "Amb 16 anys vaig descobrir el fascinant món de la programació. Vuit anys després, al 2019, vaig decidir que el Desenvolupament Web seria més que un hobby. Des de llavors he estudiat +1700h, entre un curs oficial i un bootcamp i he acumulat +2 anys d’experiència. Mentre he seguit aprenent i actualitzant-me amb +50 cursos en plataformes digitals [Coursera amb Google, Udemy, Platzi, …] principalment sobre Desenvolupament però també sobre IT, Soft Skills i anglès. Així com aportant a l’Open Source.",
     "es-ES": "Con 16 años descubrí el fascinante mundo de la programación. Ocho años después, en 2019, decidí que el Desarrollo Web sería más que un hobby. Desde entonces he estudiado +1700h, entre un curso oficial y un bootcamp y he acumulado +2 años de experiencia. Mientras he seguido aprendiendo y me he actualizando con +50 cursos en plataformas digitales [Coursera con Google, Udemy, Platzi, …] principalmente sobre Desarrollo pero también sobre IT, Soft Skills y inglés. Así cómo aportando al Open Source.",
     "en-US": "At 16 I discovered the fascinating world of programming. Eight years later, in 2019, I decided that Web Development would be more than a hobby. Since then I have studied +1700h, between an official course and a bootcamp and I have accumulated +2 years of experience. While I have continued learning and updating myself with +50 courses on digital platforms [Coursera with Google, Udemy, Platzi, …] mainly on Development but also on IT, Soft Skills and English. As well as contributing to Open Source."
   },
