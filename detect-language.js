@@ -33,13 +33,13 @@ function updateWebText(language) {
   });
 }
 
-export function accuracyFormat(accuracy) {
-  let accuracyPercentage = accuracy.toFixed(2);
-  if ($html.lang !== 'en-US') {
-    accuracyPercentage = accuracyPercentage.replace('.', ',');
+export function numberDecimalsFormat(number, decimals = 2) {
+  let numberFixed = number.toFixed(decimals);
+  if (document.documentElement.lang !== 'en-US') {
+    numberFixed = numberFixed.replace('.', ',');
   }
 
-  return `${accuracyPercentage}%`;
+  return numberFixed;
 }
 
 function initLanguageEvents() {
